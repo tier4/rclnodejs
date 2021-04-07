@@ -51,8 +51,14 @@ function getSubFolder(filePath, amentExecuted) {
   }
 
   const ext = path.parse(filePath).ext.substr(1);
-  if (amentExecuted && ext !== 'msg') {
-    return filePath.match(/\w+\/share\/\w+\/(\w+)\//)[1];
+  const subFolder = filePath.match(/\w+\/share\/\w+\/(\w+)\//)[1];
+  if (amentExecuted) {
+    // if the msg file is in subfolder
+    if (subFolder !== 'msg' && subFolder !== 'srv' && subFolder !== 'action' && ext == 'msg') {
+      return ext;
+    } else {
+      return subFolder;
+    }
   }
   // If the |amentExecuted| equals to false, the file's extension will be assigned as
   // the name of sub folder.
