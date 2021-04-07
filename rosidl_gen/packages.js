@@ -50,9 +50,6 @@ function getSubFolder(filePath, amentExecuted) {
     filePath = filePath.replace(/\\/g, '/');
   }
 
-  if (amentExecuted) {
-    return filePath.match(/\w+\/share\/\w+\/(\w+)\//)[1];
-  }
   // If the |amentExecuted| equals to false, the file's extension will be assigned as
   // the name of sub folder.
   return path.parse(filePath).ext.substr(1);
